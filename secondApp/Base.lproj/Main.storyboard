@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="17G65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SLT-Gr-FgP">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Nuevo amigo-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AmigoViewController" customModule="secondApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Introduce el nombre de usuario" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jS4-yU-g0S">
+                                <rect key="frame" x="20" y="72" width="351" height="81"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="escribir:" destination="BYZ-38-t0r" eventType="valueChanged" id="B5e-Jo-aLU"/>
+                                    <action selector="introducirUsuario:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="10R-MX-uh1"/>
+                                </connections>
+                            </textField>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="Imagen predeterminada" translatesAutoresizingMaskIntoConstraints="NO" id="mQ8-yb-Ps9">
+                                <rect key="frame" x="35" y="161" width="320" height="320"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="UL7-nZ-fw0" appends="YES" id="vtR-jh-Aaz"/>
+                                </connections>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="oJG-xN-SDo" customClass="EvaluacionControl" customModule="secondApp">
+                                <rect key="frame" x="61" y="489" width="268" height="66"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Nuevo amigo" id="nD4-7s-efE">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9Kf-yF-H3J">
+                            <connections>
+                                <action selector="cancelar:" destination="BYZ-38-t0r" id="7YN-ht-ERN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="034-N7-WhQ">
+                            <connections>
+                                <segue destination="OKK-rl-McL" kind="unwind" unwindAction="addNuevoAmigo:" id="EwI-aD-6Om"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="NombreTxt" destination="jS4-yU-g0S" id="LIO-Vw-8GF"/>
+                        <outlet property="controlEvaluacion" destination="oJG-xN-SDo" id="xlG-7G-qEN"/>
+                        <outlet property="imgView" destination="mQ8-yb-Ps9" id="gJP-Sg-5FT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="OKK-rl-McL" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="UL7-nZ-fw0">
+                    <connections>
+                        <action selector="seleccionarImagen:" destination="BYZ-38-t0r" id="cw2-sg-fN2"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1901" y="142"/>
+        </scene>
+        <!--Lista de Amigos-->
+        <scene sceneID="5jd-Qw-9yj">
+            <objects>
+                <tableViewController id="5nG-Y0-xHt" customClass="AmigoTableViewController" customModule="secondApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="5hE-fC-ox5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AmigoTableViewCell" rowHeight="100" id="0Ld-zR-8sm" customClass="AmigoTableViewCell" customModule="secondApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="0Ld-zR-8sm" id="oQR-Hz-k5I">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRy-QD-GfF">
+                                            <rect key="frame" x="111" y="8" width="329" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IKq-5w-UJw" customClass="EvaluacionControl" customModule="secondApp">
+                                            <rect key="frame" x="111" y="37" width="240" height="44"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Imagen predeterminada" translatesAutoresizingMaskIntoConstraints="NO" id="nRn-xj-Agw">
+                                            <rect key="frame" x="13" y="5" width="90" height="90"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="evaluacion" destination="IKq-5w-UJw" id="3Hx-Sw-6n4"/>
+                                    <outlet property="foto" destination="nRn-xj-Agw" id="fAy-2w-jhZ"/>
+                                    <outlet property="nombre" destination="JRy-QD-GfF" id="NrP-3M-YSa"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5nG-Y0-xHt" id="PyH-3i-bBU"/>
+                            <outlet property="delegate" destination="5nG-Y0-xHt" id="7wB-L7-pno"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Lista de Amigos" id="MR5-cB-GJn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2ka-1E-rPV">
+                            <connections>
+                                <segue destination="aOK-vq-8oG" kind="presentation" identifier="AddAmigo" id="Zdu-CU-z07"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UcD-SN-mxk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="464" y="142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pM3-oy-Bzq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SLT-Gr-FgP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lar-yN-3qt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5nG-Y0-xHt" kind="relationship" relationship="rootViewController" id="iqM-fE-y9V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yFA-wC-Nt2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-348" y="142"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="arb-cH-vjg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aOK-vq-8oG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aVM-72-aTs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="IYb-ZG-XSA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j4l-Yy-TjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1089" y="142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Imagen predeterminada" width="160" height="160"/>
+    </resources>
+</document>
